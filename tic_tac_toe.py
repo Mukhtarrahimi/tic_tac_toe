@@ -1,6 +1,6 @@
 from termcolor import colored
 
-board = [1,2,3,4,5,6,7,8,9]
+board = [1,2,3,'X',5,6,7,'O',9]
 computer, player = "O", "X"
 
 def print_board():
@@ -10,11 +10,15 @@ def print_board():
         if j % 3 == 0:
             end = "\n\n"
         if i == "X":
-            print(colored(f"{i},", 'red'), end=end)
+            print(colored(f"[{i}],", 'red'), end=end)
         elif i == "O":
-            print(colored(f"{i},", 'blue'), end=end)
+            print(colored(f"[{i}],", 'blue'), end=end)
         else:
             print(f"[{i}]", end=end)
         j += 1
-            
+        
 print_board()
+
+
+def has_empty_space():
+    return board.count('X') + board.count('O') != 9
