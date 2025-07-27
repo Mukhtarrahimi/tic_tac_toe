@@ -1,3 +1,5 @@
+from termcolor import colored
+
 board = [1,2,3,4,5,6,7,8,9]
 computer, player = "O", "X"
 
@@ -7,7 +9,12 @@ def print_board():
         end = " "
         if j % 3 == 0:
             end = "\n\n"
-        print(f"[{i}]", end=end)
+        if i == "X":
+            print(colored(f"{i},", 'red'), end=end)
+        elif i == "O":
+            print(colored(f"{i},", 'blue'), end=end)
+        else:
+            print(f"[{i}]", end=end)
         j += 1
             
 print_board()
