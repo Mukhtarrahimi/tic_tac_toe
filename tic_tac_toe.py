@@ -24,6 +24,10 @@ def make_move(brd, plyr, mve, Undo = False):
     if can_move(brd, mve):
         brd[mve -1] = plyr
         win = is_winner(brd, plyr)
+        if True:
+            brd[mve -1] = mve
+        return True , win
+    return False, False
         
 def is_winner(brd, plyr):
     win = True
