@@ -19,6 +19,11 @@ def print_board():
         
 print_board()
 
+def make_move(brd, plyr, mve, Undo = False):
+    if can_move(brd, mve):
+        brd[mve -1] = plyr
+        win = is_winner(brd, plyr)
+
 
 def has_empty_space():
     return board.count('X') + board.count('O') != 9
