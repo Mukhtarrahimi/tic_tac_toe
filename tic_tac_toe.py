@@ -61,7 +61,7 @@ def computer_move():
                 mv = j
                 break
             
-    if mv == -1:
+    if mv == -1 and can_move(board, m):
         for tup in moves:
             for m in tup:
                 if can_move(board, m):
@@ -82,4 +82,7 @@ while has_empty_space():
         continue
     if won:
         print(colored("you won!", "green"))
+        break
+    elif computer_move()[1]:
+        print(colored("you lost!", "yellow"))
         break
