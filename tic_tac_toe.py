@@ -76,7 +76,11 @@ player, computer = "X", "O"
 print("Player: X\nComputer: O\n")
 while has_empty_space():
     print_board()
-    move = int(input("Choose your move(1-9): "))
+    try:
+        move = int(input("Choose your move (1-9): "))
+    except ValueError:
+        print("Invalid input! Please enter a number.")
+        continue
     moved, won = make_move(board, player, move)
     if not moved:
         print("Invalid number! Try again!")
