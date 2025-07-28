@@ -24,6 +24,10 @@ def make_move(brd, plyr, mve, Undo = False):
         brd[mve -1] = plyr
         win = is_winner(brd, plyr)
 
+def can_move(brd, mve):
+    if mve in range(1, 10) and isinstance(brd[mve-1], int):
+        return True
+    return False
 
 def has_empty_space():
     return board.count('X') + board.count('O') != 9
