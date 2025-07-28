@@ -1,7 +1,6 @@
 from termcolor import colored
 
-board = [1,2,3,'X',5,6,7,'O',9]
-computer, player = "O", "X"
+board = [1,2,3,4,5,6,7,8,9]
 winner = ((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (3,5,8), (0,4,8), (2,4,6))
 
 def print_board():
@@ -49,3 +48,18 @@ def can_move(brd, mve):
 
 def has_empty_space():
     return board.count('X') + board.count('O') != 9
+
+
+computer, player = "O", "X"
+print("Player: X\n\nComputer: O")
+
+while has_empty_space():
+    print_board()
+    move = int(input("Choose your move(1-9):"))
+    moved, won = make_move(board, player, move)
+    if not moved:
+        print("invalid input! Try again!")
+        continue
+    if won:
+        print(colored("you won!", "green"))
+        break
