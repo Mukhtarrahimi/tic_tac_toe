@@ -1,7 +1,8 @@
 from termcolor import colored
 
-board = [1,2,3,4,5,6,7,8,9]
+board = list(range(1,10))
 winner = ((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (3,5,8), (0,4,8), (2,4,6))
+moves = ((1,3,7,9), (5,), (2,4,6,8))
 
 def print_board():
     j = 1
@@ -46,6 +47,27 @@ def can_move(brd, mve):
 
 def has_empty_space():
     return board.count('X') + board.count('O') != 9
+
+
+def computer_move():
+    mv = -1
+    for i in range(1, 10):
+        if make_move(board, computer, i, True)[1]:
+            mv = i
+            break
+    if mv == -1:
+        for j in range(1, 10):
+            if make_move(board, player, j, True)[1]:
+                mv = j
+                break
+            
+    if mv == -1:
+        for tup in moves:
+            for m in tup:
+                if can_move(board, m):
+                    mv = m
+                    break
+    return make_move(board, computer, mv)
 
 
 computer, player = "O", "X"
