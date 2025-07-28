@@ -17,13 +17,11 @@ def print_board():
             print(f"[{i}]", end=end)
         j += 1
         
-print_board()
-
 def make_move(brd, plyr, mve, Undo = False):
     if can_move(brd, mve):
         brd[mve -1] = plyr
         win = is_winner(brd, plyr)
-        if True:
+        if Undo:
             brd[mve -1] = mve
         return True , win
     return False, False
@@ -38,9 +36,9 @@ def is_winner(brd, plyr):
                 break
             if win:
                 break
-        return True
-            
-
+        return win
+        
+        
 def can_move(brd, mve):
     if mve in range(1, 10) and isinstance(brd[mve-1], int):
         return True
@@ -51,11 +49,11 @@ def has_empty_space():
 
 
 computer, player = "O", "X"
-print("Player: X\n\nComputer: O")
+print("Player: X\nComputer: O")
 
 while has_empty_space():
     print_board()
-    move = int(input("Choose your move(1-9):"))
+    move = int(input("Choose your move(1-9): "))
     moved, won = make_move(board, player, move)
     if not moved:
         print("invalid input! Try again!")
